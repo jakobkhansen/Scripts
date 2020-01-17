@@ -1,7 +1,6 @@
 #! /bin/bash
 
 direction=$1
-sink=$( pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' | head -n 1 )
 step="10%"
 
 if [[ $direction == "up" ]]; then
@@ -12,4 +11,6 @@ fi
 
 modu="$modu$step"
 
-pactl set-sink-volume $sink $modu
+echo $NOW
+
+pactl set-sink-volume @DEFAULT_SINK@ $modu
