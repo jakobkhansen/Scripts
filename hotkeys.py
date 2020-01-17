@@ -100,6 +100,14 @@ def Autoclicker(interval_range, stop_keys):
         pyautogui.click()
         time.sleep(wait)
 
+def AutoDoubleClick(interval_range, stop_keys):
+    while all(keyboard.is_pressed(key) == False for key in stop_keys):
+        wait = random.randrange(interval_range[0]*10, interval_range[1]*10, 1)/10
+        pyautogui.click()
+        time.sleep(random.randrange(1))
+        pyautogui.click()
+        time.sleep(wait)
+
 def ThievingClicker(interval_range, stop_keys):
 
     while all(keyboard.is_pressed(key) == False for key in stop_keys):
@@ -144,7 +152,9 @@ def shift_click():
 
 # Thieving
 # keyboard.add_hotkey('c', Autoclicker, args=([0.3, 0.8], ['x']))
-keyboard.add_hotkey('z', ThievingClicker, args=([0.3, 0.8], ['x']))
+# keyboard.add_hotkey('z', ThievingClicker, args=([0.3, 0.8], ['x']))
 
+# NMZ
+keyboard.add_hotkey('shift+z', AutoDoubleClick, args=([45, 58], ['shift+x']))
 
 keyboard.wait()
