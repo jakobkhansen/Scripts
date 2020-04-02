@@ -4,6 +4,8 @@ touch $filename
 
 echo '\documentclass[12pt]{article}
 
+\setlength\parindent{0pt}
+
 \usepackage[norsk]{babel}
 \usepackage{graphicx}
 \usepackage{amsmath}
