@@ -9,6 +9,18 @@ def main():
     workspaces = json.loads(output)
     workspace_nums = [int(ws["num"]) for ws in workspaces]
 
+    active_workspace = 0
+    for ws in workspaces:
+        print(ws)
+        if ws["focused"]:
+            active_workspace = int(ws["num"])
+            break
+
+    subprocess.call(["i3-msg", "workspace", str(101)])
+
+
+    print(active_workspace)
+
     print(workspace_nums)
     for i in workspace_nums:
         output = subprocess.check_output(['i3-msg', '-t', 'get_workspaces'])
@@ -21,6 +33,8 @@ def main():
         print("next_num: {}".format(next_num))
         if (next_num < i):
             subprocess.call(['i3-msg', 'rename workspace {} to {}'.format(i, next_num)])
+
+    subprocess.call(["i3-msg", "workspace", str(active_workspace)])
 
 if __name__ == "__main__":
     main()
