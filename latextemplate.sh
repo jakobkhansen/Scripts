@@ -10,6 +10,12 @@ echo '\documentclass[12pt]{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[a4paper, total={6.25in, 9.5in}]{geometry}
+\setlength{\voffset}{0.25in}
+\setlength{\headsep}{5pt}
+
 \usetikzlibrary{automata, positioning, arrows}
 
 \tikzset{
@@ -18,7 +24,7 @@ echo '\documentclass[12pt]{article}
     initial text=$ $,
 }
 
-\title{\vspace*{-3cm}Tittel}
+\title{Tittel}
 
 \author{Jakob Hansen}
 
