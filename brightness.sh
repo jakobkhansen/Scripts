@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MON="eDP1"    # Discover monitor name with: xrandr | grep " connected"
+MON="eDP-1"    # Discover monitor name with: xrandr | grep " connected"
 STEP=10          # Step Up/Down brightnes by: 5 = ".05", 10 = ".10", etc.
 
 CurrBright=$( xrandr --verbose --current | grep ^"$MON" -A5 | tail -n1 )
@@ -31,5 +31,6 @@ fi
 xrandr --output "$MON" --brightness "$CurrBright"   # Set new brightness
 
 # Display current brightness
-printf "Monitor $MON "
-echo $( xrandr --verbose --current | grep ^"$MON" -A5 | tail -n1 )
+#echo $( xrandr --verbose --current | grep ^"$MON" -A5 | tail -n1 | grep -o "..$")"%"
+bigBright=$(($MathBright))
+echo ${MathBright::-3}%
