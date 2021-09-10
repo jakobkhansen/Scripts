@@ -16,7 +16,8 @@ def main():
 
     searchResult = performSearch(directory)
 
-    print(createCommand(searchResult))
+    subprocess.Popen(createCommand(searchResult).split())
+    # print(createCommand(searchResult))
 
     
 def performSearch(directory):
