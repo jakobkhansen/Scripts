@@ -16,8 +16,14 @@ def main():
 
     searchResult = performSearch(directory)
 
-    subprocess.Popen(createCommand(searchResult).split())
-    # print(createCommand(searchResult))
+    with open(os.devnull, 'w') as f:
+        command = createCommand(searchResult)
+
+        if command[0:2] == 'cd':
+            print(command)
+
+        else:
+            subprocess.Popen(command.split(), stdout=f, stderr=f)
 
     
 def performSearch(directory):
@@ -38,7 +44,7 @@ def createCommand(searchResult):
     if os.path.isdir(searchResult):
         return "cd {}".format(searchResult)
     elif os.path.isfile(searchResult):
-        return "xdg-open {}".format(searchResult)
+        return "nohup xdg-open {}".format(searchResult)
     else:
         return ""
 
